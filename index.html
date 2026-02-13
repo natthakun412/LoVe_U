@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>ถึงคนที่ข้าพเจ้ารัก💜</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Itim&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --font-en: 'Great Vibes', cursive; /* ฟ้อนต์ภาษาอังกฤษ */
+    --font-th: 'Itim', cursive;       /* ฟ้อนต์ภาษาไทย (ไอติม) */
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-th); /* กำหนดให้ทั้งหน้าใช้ Itim เป็นหลัก */
+    /* ... ส่วนอื่นๆ ... */
+}
+
+
+/* Global & Background */
+body {
+    margin: 0;
+    font-family: var(--font-th);
+    background-image: url('pic01.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    color: white;
+    height: 100vh;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2); 
+    z-index: -1;
+}
+
+/* Typing Effect */
+#typing-text {
+    margin-bottom: 20px;
+    line-height: 1.2;
+    text-shadow: 0 0 20px rgba(255, 105, 180, 0.8);
+    min-height: 80px;
+}
+
+.en-text {
+    font-family: var(--font-en);
+    font-size: clamp(50px, 8vw, 80px);
+    font-weight: normal;
+    color: #ffe4e1;
+}
+
+.th-text {
+    font-family: var(--font-th);
+    font-size: clamp(24px, 4vw, 40px);
+    font-weight: normal;
+    color: white;
+}
+
+/* --- Intro (แก้ไขใหม่: ใส่รูปพื้นหลัง) --- */
+#intro {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    /* ใช้รูปเดียวกับ Body */
+    background-image: url('pic01.jpg'); 
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(24px, 5vw, 40px);
+    z-index: 9999;
+    animation: fadeOut 2s forwards;
+    animation-delay: 2s;
+    color: #d8b4fe; /* ปรับสีตัวหนังสือ Intro ให้เด่นขึ้น */
+    text-shadow: 0 0 10px rgba(0,0,0,0.8);
+}
+
+/* เพิ่มเลเยอร์มืดทับ Intro เพื่อให้อ่านออก */
+#intro::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* ความมืดของ Intro */
+    z-index: -1;
+}
+
+@keyframes fadeOut {
+    to { opacity: 0; visibility: hidden; }
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+}
+
+/* --- กล่อง Login แบบใส (Crystal Clear) --- */
+.login-box {
+    background: rgba(255, 255, 255, 0.05); 
+    padding: 40px 20px;
+    border-radius: 30px;
+    backdrop-filter: blur(5px); 
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3); 
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.1),
+                inset 0 0 20px rgba(255, 255, 255, 0.05); 
+    transition: transform 0.3s;
+}
+
+.login-box:hover {
+    transform: translate(-50%, -52%);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* --- ช่องรหัส 4 ช่อง --- */
+.pass-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.pass-digit {
+    width: 50px;
+    height: 60px;
+    font-size: 32px; /* ขนาดของดอกจัน */
+    text-align: center;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    outline: none;
+    transition: 0.3s;
+    font-family: var(--font-th);
+}
+
+.pass-digit:focus {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+/* ปุ่ม Login */
+.login-btn {
+    background: linear-gradient(45deg, rgba(218, 34, 255, 0.8), rgba(151, 51, 238, 0.8)); 
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+    padding: 12px 35px;
+    border-radius: 50px;
+    font-size: 18px;
+    cursor: pointer;
+    font-family: var(--font-th);
+    box-shadow: 0 5px 15px rgba(151, 51, 238, 0.3);
+    transition: all 0.3s;
+    backdrop-filter: blur(5px);
+}
+
+.login-btn:hover {
+    background: linear-gradient(45deg, #9733ee, #da22ff);
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(218, 34, 255, 0.6);
+}
+
+/* Main Content Styles */
+.main-btn {
+    padding: 12px 25px;
+    border: 1px solid rgba(255, 255, 255, 0.6); 
+    background: rgba(255, 255, 255, 0.15); 
+    border-radius: 25px;
+    margin: 10px 5px;
+    font-size: 16px;
+    cursor: pointer;
+    color: white;
+    transition: 0.3s;
+    backdrop-filter: blur(5px);
+    font-family: var(--font-th);
+}
+.main-btn:hover { background: rgba(255, 255, 255, 0.3); transform: scale(1.05); }
+
+.hidden { display: none !important; }
+
+.slider img {
+    width: 250px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: transform 0.3s;
+    margin-bottom: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+.slider img:hover { transform: scale(1.02); }
+
+/* --- แก้ไขส่วนปุ่ม Yes/No --- */
+.button-container {
+    height: 80px;
+    position: relative;
+    width: 320px; 
+    margin: 20px auto;
+}
+
+.yes { 
+    background: rgba(255, 255, 255, 0.25); 
+    color: white; 
+    font-weight: bold; 
+    border: 1px solid white;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    padding: 12px 30px;
+    cursor: pointer;
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.no { 
+    background: rgba(255, 77, 109, 0.8); 
+    color: white; 
+    border: none;
+    border-radius: 25px;
+    padding: 12px 30px;
+    cursor: pointer;
+    position: absolute; 
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Letter */
+.letter {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.95); 
+    backdrop-filter: blur(20px);
+    color: #5b21b6; 
+    padding: 40px;
+    border-radius: 20px;
+    display: none;
+    width: 280px;
+    z-index: 1000;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+    border: 2px solid #e9d5ff;
+    text-align: center;
+    font-family: var(--font-th);
+}
+
+.heart {
+    position: absolute;
+    z-index: 50;
+    animation: float 6s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes float {
+    from { transform: translateY(100vh); opacity: 1; }
+    to { transform: translateY(-10vh); opacity: 0; }
+}
+
+.fullscreen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+.fullscreen img { max-width: 90%; max-height: 90%; border-radius: 10px; }
+/* ===== ULTRA LUXURY EFFECT PACK ===== */
+.fullscreen {
+    backdrop-filter: blur(10px);
+}
+
+/* Animated gradient overlay */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(45deg, rgba(151,51,238,0.15), rgba(218,34,255,0.15), rgba(255,105,180,0.15));
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+    z-index: -1;
+}
+
+@keyframes gradientMove {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+body {
+    animation: pageFade 2s ease;
+}
+
+@keyframes pageFade {
+    from {opacity:0;}
+    to {opacity:1;}
+}
+body {
+    cursor: none;
+}
+
+.cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background: rgba(218,34,255,0.7);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    filter: blur(5px);
+}
+
+
+/* Cinematic image transition */
+.slider img {
+    transition: opacity 1s ease, transform 6s ease;
+    opacity: 1;
+}
+
+/* auto zoom cinematic */
+.slider img.zooming {
+    transform: scale(1.08);
+}
+
+
+/* luxury glow text */
+#typing-text {
+    animation: luxuryGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes luxuryGlow {
+    from {
+        text-shadow:
+        0 0 10px #fff,
+        0 0 20px #da22ff,
+        0 0 30px #9733ee;
+    }
+    to {
+        text-shadow:
+        0 0 20px #fff,
+        0 0 40px #da22ff,
+        0 0 60px #9733ee;
+    }
+}
+
+
+/* premium button glow */
+.main-btn, .login-btn, .yes {
+    box-shadow:
+    0 0 10px rgba(218,34,255,0.5),
+    0 0 20px rgba(151,51,238,0.3);
+}
+
+.main-btn:hover, .login-btn:hover, .yes:hover {
+    box-shadow:
+    0 0 20px rgba(218,34,255,0.8),
+    0 0 40px rgba(151,51,238,0.6);
+}
+
+
+/* smooth entrance animation */
+#main-content {
+    animation: luxuryFade 2s ease;
+}
+
+@keyframes luxuryFade {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+
+/* floating particles */
+.particle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 5;
+    animation: particleFloat linear infinite;
+}
+
+@keyframes particleFloat {
+    from {
+        transform: translateY(100vh);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-10vh);
+        opacity: 0;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<div id="intro">
+    💜 สำหรับที่รักของหนู💜
+</div>
+
+<div class="center login-box" id="login-section">
+    <h2 style="font-size: 28px; margin-bottom: 10px; text-shadow: 0 2px 5px rgba(0,0,0,0.3);">เจ้ากรรมนายเวร 💜</h2>
+    <p style="margin-bottom: 25px; font-size: 16px; opacity: 1; text-shadow: 0 1px 3px rgba(0,0,0,0.5);">รหัสหน้าจอมือถือ 4 ตัว</p>
+    
+    <div class="pass-container">
+        <input type="password" inputmode="numeric" class="pass-digit" maxlength="1" oninput="moveToNext(this, 1)" onkeydown="backspace(event, 0)">
+        <input type="password" inputmode="numeric" class="pass-digit" maxlength="1" oninput="moveToNext(this, 2)" onkeydown="backspace(event, 1)">
+        <input type="password" inputmode="numeric" class="pass-digit" maxlength="1" oninput="moveToNext(this, 3)" onkeydown="backspace(event, 2)">
+        <input type="password" inputmode="numeric" class="pass-digit" maxlength="1" oninput="moveToNext(this, 4)" onkeydown="backspace(event, 3)">
+    </div>
+    
+    <button class="login-btn" onclick="checkLogin()">✨ Login ✨</button>
+    <p id="error-msg" style="color: #ffb3c1; text-shadow: 0 1px 2px black; margin-top: 15px; min-height: 24px;"></p>
+</div>
+
+<div class="center hidden" id="main-content">
+    <h1 id="typing-text"></h1>
+    <div class="slider">
+        <img id="slide-img" src="pic1.jpeg" onclick="openFullscreen(this.src)">
+    </div>
+    <br>
+    <button class="main-btn" onclick="showLetter()">💌 กระดาษใบเล็ก</button>
+    <h2 style="text-shadow: 0 2px 10px rgba(0,0,0,0.5);">รักอ่ะป่าวจ๊ะ 💜</h2>
+    
+    <div class="button-container">
+        <button class="yes" onclick="sayYes()">YES 💜</button>
+        <button class="no" id="no-btn" onmouseover="moveNo()">NO</button>
+    </div>
+
+</div>
+
+<div class="letter" id="letter-popup">
+    <h3 style="color: #d946ef;">ถึงคนที่ข้าพเจ้ารัก 💜</h3>
+    <p style="font-size: 18px; line-height: 1.6;">
+        หนูรักพี่นะคะ<br>
+        พี่คือความสุขของหนูนะ<br>
+        อยู่กันไปเรื่อยๆ แบบนี้นะคะ<br><br>
+        <span style="font-size: 20px; color: #9333ea;">รักคนแก่คนนี้ที่สุดเลยคั๊บ💜</span>
+    </p>
+    <button onclick="closeLetter()" style="background: linear-gradient(45deg, #da22ff, #9733ee); color: white; border: none; padding: 10px 25px; border-radius: 20px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">ปิดจดหมาย</button>
+</div>
+
+<div class="fullscreen" id="fullscreen-view" onclick="closeFullscreen()">
+    <img id="full-img">
+</div>
+
+<audio id="bg-music" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+// --- Variables ---
+const images = ["pic1.jpeg", "pic2.jpeg", "pic3.jpeg", "pic4.jpeg", "pic5.jpeg", "pic6.jpeg", "pic7.jpeg","pic8.jpeg", "pic9.jpeg", "pic10.jpeg", "pic11.jpeg", "pic12.jpeg", "pic13.jpeg", "pic14.jpeg","pic15.jpeg","pic16.jpeg","pic17.jpeg","pic18.jpeg","pic19.jpeg"];
+const cursor = document.createElement("div");
+cursor.className = "cursor";
+document.body.appendChild(cursor);
+
+document.addEventListener("mousemove", e=>{
+    cursor.style.left = e.clientX+"px";
+    cursor.style.top = e.clientY+"px";
+});
+images.forEach(src=>{
+    const img = new Image();
+    img.src = src;
+});
+let imgIndex = 0;
+let textIndex = 0;
+const greetingText = "Happy Valentine's Day เจ้ากรรมนายเวร 💜";
+let musicPlaying = false;
+
+// --- Logic 4 ช่อง ---
+function moveToNext(field, index) {
+    if (field.value.length >= 1) {
+        if (index < 4) {
+            document.getElementsByClassName('pass-digit')[index].focus();
+        }
+    }
+}
+
+function backspace(e, index) {
+    if (e.key === "Backspace" && e.target.value === "") {
+        if (index > 0) {
+            document.getElementsByClassName('pass-digit')[index - 1].focus();
+        }
+    }
+}
+
+// --- Login Function ---
+function checkLogin() {
+    const digits = document.getElementsByClassName("pass-digit");
+    let fullPass = "";
+    for(let i=0; i<digits.length; i++) {
+        fullPass += digits[i].value;
+    }
+
+    const loginSection = document.getElementById("login-section");
+    const mainContent = document.getElementById("main-content");
+    const errorMsg = document.getElementById("error-msg");
+
+    if (fullPass === "0428") {
+        loginSection.style.transition = "opacity 0.5s";
+        loginSection.style.opacity = "0";
+        setTimeout(() => {
+            loginSection.style.display = "none";
+            mainContent.classList.remove("hidden");
+            mainContent.style.display = "block";
+            mainContent.style.opacity = "0";
+            mainContent.style.transition = "opacity 1s";
+            setTimeout(() => mainContent.style.opacity = "1", 100);
+            startEverything();
+        }, 500);
+    } else {
+        errorMsg.innerHTML = "รหัสผิดง่ะ! ลองใหม่นะ 🥺";
+        loginSection.style.animation = "shake 0.3s";
+        setTimeout(() => loginSection.style.animation = "", 300);
+        for(let i=0; i<digits.length; i++) { digits[i].value = ""; }
+        digits[0].focus();
+    }
+}
+
+// Animation สั่น
+const styleSheet = document.createElement("style");
+styleSheet.innerText = `
+@keyframes shake {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  25% { transform: translate(-52%, -50%) rotate(-5deg); }
+  75% { transform: translate(-48%, -50%) rotate(5deg); }
+  100% { transform: translate(-50%, -50%) rotate(0deg); }
+}`;
+document.head.appendChild(styleSheet);
+
+// --- General Functions ---
+function showLetter() {
+    const letter = document.getElementById("letter-popup");
+    if (letter) { letter.style.display = "block"; letter.style.zIndex = "2000"; }
+}
+
+function closeLetter() {
+    const letter = document.getElementById("letter-popup");
+    if (letter) { letter.style.display = "none"; }
+}
+
+function typeEffect() {
+    const typingEl = document.getElementById("typing-text");
+    if (typingEl && textIndex < greetingText.length) {
+        let char = greetingText.charAt(textIndex);
+        let span = document.createElement("span");
+        if (/[a-zA-Z]/.test(char)) span.className = "en-text";
+        else span.className = "th-text";
+        span.innerHTML = char;
+        typingEl.appendChild(span);
+        textIndex++;
+        setTimeout(typeEffect, 70);
+    }
+}
+
+function startSlider() {
+    const slideImg = document.getElementById("slide-img");
+
+    setInterval(() => {
+
+        slideImg.style.opacity = 0;
+
+        setTimeout(() => {
+
+            imgIndex = (imgIndex + 1) % images.length;
+
+            slideImg.src = images[imgIndex];
+
+            slideImg.style.opacity = 1;
+
+            slideImg.classList.remove("zooming");
+
+            setTimeout(() => {
+                slideImg.classList.add("zooming");
+            }, 100);
+
+        }, 500);
+
+    }, 4000);
+}
+
+
+function createParticles() {
+
+    setInterval(() => {
+
+        const p = document.createElement("div");
+
+        p.className = "particle";
+
+        p.innerHTML = ["✨","💜","⭐","🌸"][Math.floor(Math.random()*4)];
+
+        p.style.left = Math.random()*100+"vw";
+
+        p.style.fontSize = (Math.random()*15+10)+"px";
+
+        p.style.animationDuration = (Math.random()*5+5)+"s";
+
+        document.body.appendChild(p);
+
+        setTimeout(()=>p.remove(),10000);
+
+    },300);
+}
+function createHearts() {
+
+    setInterval(() => {
+
+        const heart = document.createElement("div");
+
+        heart.className = "heart";
+
+        heart.innerHTML = "💜";
+
+        heart.style.left = Math.random() * 100 + "vw";
+
+        heart.style.fontSize = (Math.random() * 20 + 20) + "px";
+
+        heart.style.animationDuration = (Math.random()*3+4)+"s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 7000);
+
+    }, 400);
+
+}
+
+
+function toggleMusic() {
+    const music = document.getElementById("bg-music");
+    if (!musicPlaying) {
+        music.play().catch(e => console.log("User interaction required"));
+        musicPlaying = true;
+    } else {
+        music.pause();
+        musicPlaying = false;
+    }
+}
+
+function openFullscreen(src) {
+    const view = document.getElementById("fullscreen-view");
+    document.getElementById("full-img").src = src;
+    view.style.display = "flex";
+}
+
+function closeFullscreen() {
+    document.getElementById("fullscreen-view").style.display = "none";
+}
+
+function moveNo() {
+    const btn = document.getElementById("no-btn");
+    const x = Math.random() * (window.innerWidth - btn.offsetWidth);
+    const y = Math.random() * (window.innerHeight - btn.offsetHeight);
+    btn.style.left = x + "px";
+    btn.style.top = y + "px";
+    btn.style.transform = "none"; 
+}
+
+function sayYes() {
+    alert("พี่จะเป็นคนที่หนูรักตลอดไปนะคะ 💜");
+}
+
+function startEverything() {
+
+    typeEffect();
+
+    startSlider();
+
+    createHearts();
+
+    createParticles();
+
+    startParallax();
+
+    const music = document.getElementById("bg-music");
+
+    music.play().catch(()=>{
+        document.addEventListener('click',()=>{
+            music.play();
+        },{once:true});
+    });
+}
+function startParallax() {
+
+    document.addEventListener("mousemove",(e)=>{
+
+        const x = (e.clientX / window.innerWidth - 0.5) * 20;
+
+        const y = (e.clientY / window.innerHeight - 0.5) * 20;
+
+        document.body.style.backgroundPosition =
+        `calc(50% + ${x}px) calc(50% + ${y}px)`;
+
+    });
+
+}
+</script>
+
+
+</body>
+</html>
